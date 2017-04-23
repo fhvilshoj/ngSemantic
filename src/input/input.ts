@@ -14,7 +14,7 @@ import { FormControl } from "@angular/forms";
  */
 @Component({
   selector: "sm-input",
-  template: `<div class="field" [ngClass]="{error: (!control.valid && control.dirty && isInsideForm) }">
+  template: `<div class="field {{fieldClass}}" [ngClass]="{error: (!control.valid && control.dirty && isInsideForm) }">
   <label *ngIf="label && isInsideForm">{{label}}</label>
   <div class="ui input {{class}}" [ngClass]="{'icon': icon, 'error': (!control.valid && control.dirty &&!isInsideForm)}">
   <label *ngIf="label && !isInsideForm" class="ui label">{{label}}</label>
@@ -26,6 +26,7 @@ import { FormControl } from "@angular/forms";
 export class SemanticInputComponent implements OnInit {
   @Input() label: string;
   @Input() class: string;
+  @Input() fieldClass: string;
   @Input() icon: string;
   @Input() type: string = "text";
   @Input() placeholder: string;
